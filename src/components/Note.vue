@@ -2,8 +2,7 @@
 	<div id="note">
 		<p id="note-title">{{ NoteTitle }}</p>
 		<p id="note-date">{{ NoteDate }}</p>
-		<button id="delete-note" v-on:click="deleteNote">delete</button>
-		<button id="edit-note" v-on:click="editNote">edit</button>
+		
 		<!-- <div id="note-content">{{ NoteContent }}</div> -->
 		<textarea name="note-content" id="edit-note-content" cols="30" rows="10" v-model="NoteContent">{{ NoteContent }}</textarea>
 	</div>
