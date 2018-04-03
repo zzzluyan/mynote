@@ -1,24 +1,23 @@
 <template>
-	<div id="note-list">
+	<div class="note-list">
 		<input type="text" v-model="title">
-		<textarea name="listContent" id="list-content" cols="30" rows="10" v-model="content"></textarea>
+		<textarea name="listContent" class="list-content" cols="30" rows="10" v-model="content"></textarea>
+		
 		<button v-on:click="addNewList">add new list</button>
 		<ul>
-			<li v-for="(list,index) in noteList" v-bind:key="list.listId">
+			<li v-for="(list,index) of noteList" v-bind:key="list.listId">
 				<p>{{ list.listDate }}</p>
 				<p>{{ list.listTitle }}</p>
 				<p>{{ list.listContent }}</p>
-				<button id="delete-note" v-on:click="deleteNote(index)">delete</button>
-				<button id="edit-note" v-on:click="editNote(index)">edit</button>
+				<button class="delete-note" v-on:click="deleteNote(index)">delete</button>
+				<button class="edit-note" v-on:click="editNote(index)">edit</button>
 			</li>
 		</ul>
 	</div>
 </template>
 
 <style>
-	#note-list {
-		/*float: right;*/
-	}
+	
 </style>
 
 
@@ -33,12 +32,9 @@
 			}
 		},
 		props:['noteList'],
-		// mounted (){
-			
-		// },
 		methods: {
 			addNewList () {
-				// console.log(this.noteList);
+				console.log(this.noteList);
 				if (!this.title || !this.content) {
 					alert('便签内容不能为空');
 					return;
@@ -48,7 +44,7 @@
 				let month = date.getMonth() + 1;
 				let day = date.getDate();
 				let listdate = '' + year + '/' + month + '/' + day;  
-				this.noteList.push({
+				this.noteList.unshift({
 					listId: this.length,
 					listDate: listdate,
 					listTitle: this.title,
@@ -58,6 +54,7 @@
 				this.content = '';
 			},
 			deleteNote (index) {
+				// console.log(this);
 				let back = confirm ('delete the note?');
 				if (back) {
 					this.noteList.splice(index,1);

@@ -3,7 +3,7 @@
     <!-- <img src="./assets/logo.png"> -->
    <!-- <router-view name="note"></router-view> -->
 
-    <router-view name="notesort"></router-view>
+    <router-view name="note"></router-view>
   </div>
 </template>
 

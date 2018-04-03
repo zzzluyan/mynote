@@ -15,7 +15,6 @@ export default new Router({
     // },
     {
       path: '/',
-      name: 'Note',
       components: {
       	note: Note,
       	notesort: NoteSort
