@@ -5,10 +5,10 @@
 		
 		<button v-on:click="addNewList">add new list</button>
 		<ul>
-			<li v-for="(list,index) of noteList" v-bind:key="list.listId">
-				<p>{{ list.listDate }}</p>
-				<p>{{ list.listTitle }}</p>
-				<p>{{ list.listContent }}</p>
+			<li v-for="(item,index) of lists" v-bind:key="item.listId">
+				<p>{{ item.listDate }}</p>
+				<p>{{ item.listTitle }}</p>
+				<p>{{ item.listContent }}</p>
 				<button class="delete-note" v-on:click="deleteNote(index)">delete</button>
 				<button class="edit-note" v-on:click="editNote(index)">edit</button>
 			</li>
@@ -28,13 +28,15 @@
 		data () {
 			return {
 				title: '',
-				content: ''
+				content: '',
+				lists: this.noteList, //当props数据当作数据输出，固在子组件初始化props数据
+				// id: this.NoteList.noteSortId
 			}
 		},
 		props:['noteList'],
 		methods: {
 			addNewList () {
-				console.log(this.noteList);
+				// console.log(this.noteList);
 				if (!this.title || !this.content) {
 					alert('便签内容不能为空');
 					return;
@@ -45,13 +47,14 @@
 				let day = date.getDate();
 				let listdate = '' + year + '/' + month + '/' + day;  
 				this.noteList.unshift({
-					listId: this.length,
+					listId: "" + year + month + day + parseInt(Math.random()*100),
 					listDate: listdate,
 					listTitle: this.title,
 					listContent: this.content
 				});
 				this.title = '';
 				this.content = '';
+				// this.$emit('showlist');
 			},
 			deleteNote (index) {
 				// console.log(this);

@@ -3,7 +3,7 @@
 		<input type="text" v-model="noteTitle" >
 		<button v-on:click="addNewSort">add new sort title</button>	
 		<ul>
-			<li v-for="sort of noteSorts" v-bind:key="sort.noteSortId" v-bind:id="sort.noteSortId" v-on:click="showNote">
+			<li class="isShow" v-for="sort of noteSorts" v-bind:key="sort.noteSortId" v-bind:id="sort.noteSortId" v-on:click="showNote" >
 				{{ sort.noteSortName }}
 			</li>
 		</ul>
@@ -13,6 +13,9 @@
 <style>
 	#note-sort > ul {
 		list-style-type: none;
+	}
+	.isShow:hover {
+		color: pink;
 	}
 </style>
 
@@ -25,6 +28,7 @@
 		data () {
 			return {
 				noteTitle: '',
+				Show: true
 			}
 		},
 		props: ['noteSorts'],
@@ -34,6 +38,7 @@
 					alert('not null!');
 					return;
 				}
+				//增加便签分类类表
 				let date = new Date();
 				let year = date.getFullYear();
 				let month = date.getMonth();
@@ -47,10 +52,13 @@
 					noteSortName: this.noteTitle,
 				}); 
 				this.noteTitle = '';
+				//列表名增加后，触发notelist增加事件，为新便签开拓新数组空间
+				this.$emit('addNewList',id);
 			},
 			showNote (e) {
-				// console.log(this);
-				console.log(e.target.id);
+				this.$emit('showList',e.target.id);
+				// console.log(e);
+				// e.target.className = 'isShow';
 			}
 		}
 	}

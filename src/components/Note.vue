@@ -1,12 +1,12 @@
 <template>
 	<div id="note">
 		<div class="sort">
-			<note-sort v-bind:note-sorts="noteSorts"></note-sort>
+			<note-sort v-bind:note-sorts="noteSorts" v-on:addNewList="addNoteList" v-on:showList="showMyList"></note-sort>
 		</div>
 		
 		
 		<div v-for="item of noteLists" class="list" v-bind:key="item.noteSortId">
-			<note-list v-bind:note-list="item.noteList" v-if="item.noteSortId"></note-list>
+			<note-list v-bind:note-list="item.noteList" v-if="showId==item.noteSortId" ></note-list>
 		</div>
 	</div>
 
@@ -25,6 +25,7 @@
 		float: right;
 		width: 30%;
 	}
+	
 </style>
 
 
@@ -38,25 +39,26 @@
 		data () {
 			return {
 				noteSorts: [],
-				noteLists: []
+				noteLists: [],
+				showId: '',
+				isShow: false
 			}
 		},
 		components: {
 			NoteSort,
 			NoteList
 		},
-		watch: {
-			noteSorts (newval) {
-				if( this.noteSorts.length === 0 ) return;
-				console.log(this.noteSorts.length);
-				console.log(newval);
-				this.noteLists.push({
-					noteSortId: newval.noteSortId,
-					noteList: []
-				});
-				console.log(newval);
-			}
-		},
+		// watch: {
+		// 	noteSorts (newval) {
+		// 		console.log(this.noteSorts.length);
+		// 		console.log(newval);
+		// 		this.noteLists.push({
+		// 			noteSortId: 12345,
+		// 			noteList: []
+		// 		});
+		// 		console.log(newval);
+		// 	}
+		// },
 		mounted () {
 			let _this = this;
 			let data;
@@ -69,12 +71,27 @@
 						noteSortName: item.noteSortName
 					});
 					_this.noteLists.push({
-						noteSortId: item.noteSortId,
+						noteSortId: item.noteSortId,//便于后期映射的ID对应
 						noteList: item.noteList
 					});
 				}
+				// _this.showId = '201802003298';
 				// console.log(_this.noteLists);
 			});
+		},
+		methods: {
+			//通过NoteSort自子组件触发事件调用，用于生成新便签类名的列表数组
+			addNoteList (id) {
+				this.noteLists.push({
+					noteSortId: id,
+					noteList: []
+				});
+			},
+			showMyList (id) {
+				// alert(id);
+				this.showId = id;
+				this.isShow = !this.isShow;
+			}
 		}
 	}
 </script>
