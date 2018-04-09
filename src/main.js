@@ -5,6 +5,9 @@ import App from './App';
 import router from './router/index';
 // import VueResource from 'vue-resource';
 import axios from 'axios';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 
 Vue.config.productionTip = false
 
@@ -16,6 +19,7 @@ new Vue({
   template: '<App/>'
 })
 
+Vue.use(ElementUI);
 // Vue.use(VueResource);
 // Vue.use(axios);//axios不是vue插件，不能用use方法调用
 Vue.prototype.axios = axios;

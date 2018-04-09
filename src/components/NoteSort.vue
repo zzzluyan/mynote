@@ -1,9 +1,9 @@
 <template>
 	<div id="note-sort">
 		<input type="text" v-model="noteTitle" >
-		<button v-on:click="addNewSort">add new sort title</button>	
+		<el-button v-on:click="addNewSort">add new sort title</el-button>	
 		<ul>
-			<li class="isShow" v-for="sort of noteSorts" v-bind:key="sort.noteSortId" v-bind:id="sort.noteSortId" v-on:click="showNote" >
+			<li v-for="(sort,index) of noteSorts" v-bind:key="sort.noteSortId" v-bind:id="sort.noteSortId" v-bind:class="showIndex==index?'isShow':''" v-on:click="showNote" >
 				{{ sort.noteSortName }}
 			</li>
 		</ul>
@@ -14,7 +14,7 @@
 	#note-sort > ul {
 		list-style-type: none;
 	}
-	.isShow:hover {
+	.isShow {
 		color: pink;
 	}
 </style>
@@ -28,8 +28,11 @@
 		data () {
 			return {
 				noteTitle: '',
-				Show: true
+				showIndex: 0
 			}
+		},
+		components: {
+			ElButton
 		},
 		props: ['noteSorts'],
 		methods: {
@@ -56,9 +59,9 @@
 				this.$emit('addNewList',id);
 			},
 			showNote (e) {
-				this.$emit('showList',e.target.id);
 				// console.log(e);
-				// e.target.className = 'isShow';
+				this.$emit('showList',e.target.id);
+				// this.showIndex = index;
 			}
 		}
 	}

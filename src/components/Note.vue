@@ -1,29 +1,37 @@
 <template>
 	<div id="note">
-		<div class="sort">
-			<note-sort v-bind:note-sorts="noteSorts" v-on:addNewList="addNoteList" v-on:showList="showMyList"></note-sort>
-		</div>
+		<el-row :gutter="20">
+			<el-col :span="6">	
+				<div class="sort">
+					<note-sort v-bind:note-sorts="noteSorts" v-on:addNewList="addNoteList" v-on:showList="showMyList"></note-sort>
+				</div>
+			</el-col>
+			<el-col :span="18">	
+				<div v-for="item of noteLists" class="list" v-bind:key="item.noteSortId">
+					<note-list v-bind:note-list="item.noteList" v-if="showId==item.noteSortId" ></note-list>
+				</div>
+			</el-col>
+		</el-row>
 		
 		
-		<div v-for="item of noteLists" class="list" v-bind:key="item.noteSortId">
-			<note-list v-bind:note-list="item.noteList" v-if="showId==item.noteSortId" ></note-list>
-		</div>
 	</div>
 
 </template>
 
 
 <style>
-/*	#note{
-		float: left;
-	}*/
+	#note{
+		width: 70%;
+		margin: auto;
+	}
 	.sort {
-		float: left;
+		/*float: left;*/
 	}
 	.list {
-		clear: both;
-		float: right;
-		width: 30%;
+		/*clear: both;*/
+		/*float: left;*/
+		width: 100%;
+		margin: auto;
 	}
 	
 </style>
@@ -40,8 +48,8 @@
 			return {
 				noteSorts: [],
 				noteLists: [],
-				showId: '',
-				isShow: false
+				showId: '201802003298',
+				// isShow: 0
 			}
 		},
 		components: {
@@ -90,7 +98,7 @@
 			showMyList (id) {
 				// alert(id);
 				this.showId = id;
-				this.isShow = !this.isShow;
+				// this.isShow = ;
 			}
 		}
 	}

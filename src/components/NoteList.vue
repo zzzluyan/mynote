@@ -4,15 +4,14 @@
 		<textarea name="listContent" class="list-content" cols="30" rows="10" v-model="content"></textarea>
 		
 		<button v-on:click="addNewList">add new list</button>
-		<ul>
-			<li v-for="(item,index) of lists" v-bind:key="item.listId">
-				<p>{{ item.listDate }}</p>
-				<p>{{ item.listTitle }}</p>
-				<p>{{ item.listContent }}</p>
-				<button class="delete-note" v-on:click="deleteNote(index)">delete</button>
-				<button class="edit-note" v-on:click="editNote(index)">edit</button>
-			</li>
-		</ul>
+		<div v-for="(item,index) of lists" v-bind:key="item.listId">
+			<p>{{ item.listDate }}</p>
+			<p>{{ item.listTitle }}</p>
+			<p>{{ item.listContent }}</p>
+			<button class="delete-note" v-on:click="deleteNote(index)">delete</button>
+			<button class="edit-note" v-on:click="editNote(index)">edit</button>
+		</div>
+	
 	</div>
 </template>
 
