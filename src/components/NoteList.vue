@@ -1,22 +1,60 @@
 <template>
 	<div class="note-list">
-		<input type="text" v-model="title">
-		<textarea name="listContent" class="list-content" cols="30" rows="10" v-model="content"></textarea>
+		<!-- <el-container>
+			<el-container>
+				<el-header>
+					<el-input clearable type="text" v-model="title"></el-input>
+				</el-header>
+				<el-main>
+					<el-input type="textarea" :autosize="{ minRows: 3, maxRows: 6}" name="listContent" class="list-content" cols="30" rows="10" v-model="content"></el-input>
+				</el-main>
+			</el-container>
+			<el-aside>
+				<el-button v-on:click="addNewList">add new list</el-button>
+			</el-aside>
+		</el-container> -->
+		<el-row>
+			<el-col :span="5">
+				<el-input clearable type="text" v-model="title" placeholder="title..."></el-input>
+			</el-col>
+			<el-col :span="18">
+				<el-input name="listContent" class="list-content" cols="30" rows="10" v-model="content" placeholder="content..."></el-input>
+			</el-col>
+			<el-col :span="1">
+				<el-button v-on:click="addNewList">add new list</el-button>
+			</el-col>
+		</el-row>
 		
-		<button v-on:click="addNewList">add new list</button>
-		<div v-for="(item,index) of lists" v-bind:key="item.listId">
-			<p>{{ item.listDate }}</p>
-			<p>{{ item.listTitle }}</p>
-			<p>{{ item.listContent }}</p>
-			<button class="delete-note" v-on:click="deleteNote(index)">delete</button>
-			<button class="edit-note" v-on:click="editNote(index)">edit</button>
-		</div>
+		
+		<el-row>
+			<div v-for="(item,index) of lists" v-bind:key="item.listId">
+				<el-col :span="9">
+					<p>日期: {{ item.listDate }}</p>
+				</el-col>
+				<el-col :span="15">
+					<p>便签标题: {{ item.listTitle }}</p>
+				</el-col>
+				<el-row>
+					<p>{{ item.listContent }}</p>
+				</el-row>
+				<el-row>
+					<el-button class="delete-note" v-on:click="deleteNote(index)">delete</el-button>
+					<el-button class="edit-note" v-on:click="editNote(index)">edit</el-button>
+				</el-row>
+				
+			</div>
+		</el-row>
+		
 	
 	</div>
 </template>
 
 <style>
-	
+	/*.el-aside el-button{
+		line-height: 200px;
+		min-width: 30px;
+		max-width: 60px;
+	}*/
 </style>
 
 

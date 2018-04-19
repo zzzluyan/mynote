@@ -1,12 +1,12 @@
 <template>
 	<div id="note">
-		<el-row :gutter="20">
-			<el-col :span="6">	
+		<el-row>
+			<el-col :span="6" :offset="2">	
 				<div class="sort">
 					<note-sort v-bind:note-sorts="noteSorts" v-on:addNewList="addNoteList" v-on:showList="showMyList"></note-sort>
 				</div>
 			</el-col>
-			<el-col :span="18">	
+			<el-col :span="12" :offset="1">	
 				<div v-for="item of noteLists" class="list" v-bind:key="item.noteSortId">
 					<note-list v-bind:note-list="item.noteList" v-if="showId==item.noteSortId" ></note-list>
 				</div>
@@ -20,27 +20,33 @@
 
 
 <style>
-	#note{
+	/*#note{
 		width: 70%;
 		margin: auto;
-	}
-	.sort {
-		/*float: left;*/
-	}
-	.list {
-		/*clear: both;*/
-		/*float: left;*/
+	}*/
+	/*.sort {
+		float: left;
+	}*/
+	/*.list {
+		clear: both;
+		float: left;
 		width: 100%;
 		margin: auto;
-	}
+	}*/
 	
+	/*for test site*/
+	/*div {
+		border:3px solid red;
+		
+	}*/
+
 </style>
 
 
 <script>
-	import NoteList from './NoteList';
-	import NoteSort from './NoteSort';
-	import axios from 'axios';
+	import NoteList from './NoteList'
+	import NoteSort from './NoteSort'
+	import axios from 'axios'
 
 	export default {
 		name: 'Note',
