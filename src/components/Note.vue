@@ -12,33 +12,12 @@
 				</div>
 			</el-col>
 		</el-row>
-		
-		
 	</div>
 
 </template>
 
 
 <style>
-	/*#note{
-		width: 70%;
-		margin: auto;
-	}*/
-	/*.sort {
-		float: left;
-	}*/
-	/*.list {
-		clear: both;
-		float: left;
-		width: 100%;
-		margin: auto;
-	}*/
-	
-	/*for test site*/
-	/*div {
-		border:3px solid red;
-		
-	}*/
 
 </style>
 
@@ -62,17 +41,6 @@
 			NoteSort,
 			NoteList
 		},
-		// watch: {
-		// 	noteSorts (newval) {
-		// 		console.log(this.noteSorts.length);
-		// 		console.log(newval);
-		// 		this.noteLists.push({
-		// 			noteSortId: 12345,
-		// 			noteList: []
-		// 		});
-		// 		console.log(newval);
-		// 	}
-		// },
 		mounted () {
 			let _this = this;
 			let data;
@@ -89,7 +57,6 @@
 						noteList: item.noteList
 					});
 				}
-				// _this.showId = '201802003298';
 				// console.log(_this.noteLists);
 			});
 		},
@@ -104,7 +71,6 @@
 			showMyList (id) {
 				// alert(id);
 				this.showId = id;
-				// this.isShow = ;
 			}
 		}
 	}

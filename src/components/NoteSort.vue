@@ -25,14 +25,15 @@
 		list-style-type: none;
 	}
 	.isShow {
-		color: pink;
+		color: #424242;
+		font-size: 20px;
 	}
 </style>
 
 
 
 <script>
-	import NoteName from './NoteName'
+	// import NoteName from './NoteName'
 	export default {
 		name: 'NoteSort',
 		data () {
