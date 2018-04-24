@@ -26,7 +26,7 @@
 		</el-row>
 		
 		
-		<el-row>
+		<el-row class="list">
 			<div v-for="(item,index) of lists" v-bind:key="item.listId">
 				<el-col :span="9">
 					<p>日期: {{ item.listDate }}</p>
@@ -49,15 +49,15 @@
 	</div>
 </template>
 
+
 <style>
-	/*.el-aside el-button{
-		line-height: 200px;
-		min-width: 30px;
-		max-width: 60px;
-	}*/
+	.list {
+		padding: 10px;
+		background-color: #B3C0D1;
+		border-left: 5px solid #333;
+		border-radius: 10px;
+	}
 </style>
-
-
 
 <script>
 	export default {

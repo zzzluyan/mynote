@@ -2,7 +2,7 @@
 	<div id="note-sort">
 		<el-row>
 			<el-col :span="12">
-				<el-input clearable type="text" v-model="noteTitle" ></el-input>
+				<el-input clearable type="text" v-model="noteTitle" placeholder="add a new sort..."></el-input>
 			</el-col>
 			<el-col :span="12">
 				<el-button v-on:click="addNewSort">add new sort title</el-button>
@@ -25,8 +25,13 @@
 		list-style-type: none;
 	}
 	.isShow {
+		padding: 10px;
 		color: #424242;
 		font-size: 20px;
+		/*margin-right: 10px;*/
+		border-right: 5px solid #333;
+		background-color: #B3C0D1;
+		border-radius: 10px;
 	}
 </style>
 

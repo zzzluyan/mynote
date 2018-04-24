@@ -7,7 +7,7 @@
 				</div>
 			</el-col>
 			<el-col :span="12" :offset="1">	
-				<div v-for="item of noteLists" class="list" v-bind:key="item.noteSortId">
+				<div v-for="item of noteLists" v-bind:key="item.noteSortId">
 					<note-list v-bind:note-list="item.noteList" v-if="showId==item.noteSortId" ></note-list>
 				</div>
 			</el-col>
@@ -16,10 +16,6 @@
 
 </template>
 
-
-<style>
-
-</style>
 
 
 <script>

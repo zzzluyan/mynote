@@ -89,10 +89,10 @@ module.exports = {
       //   // loader:'style!css'
       //   loader: 'style-loader!css-loader'
       // },
-      {
-        test:/\\\\\\\\.(eot|woff|woff2|ttf)([\\\\\\\\?]?.*)/,
-        loader:'file'
-      }
+      // {
+      //   test:/\\\\\\\\.(eot|woff|woff2|ttf)([\\\\\\\\?]?.*)/,
+      //   loader:'file'
+      // }
     ]
   },
   node: {
